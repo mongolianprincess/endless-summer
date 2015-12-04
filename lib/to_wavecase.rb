@@ -1,6 +1,6 @@
 class String
 
-  def wavecase string
+  def to_wavecase string
    arr, char, result = [],[],[]
    arr = string.split(' ').each_slice(string.split(' ').count).to_a.transpose
    arr.each_with_index do |arr_word, index|
