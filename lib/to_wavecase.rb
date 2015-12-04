@@ -1,16 +1,18 @@
 class String
 
-  def to_wavecase(string)
-    sentence = Array.new
-    string.split('').each do |word|
-      string.each_char.with_index do |c, index|
-        if index.even?
-          sentence.push(c.downcase)
-        else
-          sentence.push(c.upcase)
-        end
-      end
-    end
+  def wavecase string
+   arr, char, result = [],[],[]
+   arr = string.split(' ').each_slice(string.split(' ').count).to_a.transpose
+   arr.each_with_index do |arr_word, index|
+     arr_word.each_with_index do |word, sub_index|
+       word.each_char.with_index do |letter, letter_index|
+         letter_index.even? ? char.push(letter.upcase) : char.push(letter.downcase)
+       end
+     end
+     result.push(char.join(''))
+     char.clear
+   end
+   result.join(' ')
   end
 end
 
